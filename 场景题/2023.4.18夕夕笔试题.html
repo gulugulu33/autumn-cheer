@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo List</title>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+
+    <input type="text" id="new-todo-text" />
+    <button onclick="addTodo()">Add Todo</button>
+
+    <ul id="todo-list"></ul>
+
+    <script>
+      // t1
+      Promise.allSettled = function (promises) {
+        return Promise.all(
+          promises.map((p) =>
+            Promise.resolve(p)
+              .then((value) => ({ status: "fulfilled", value }))
+              .catch((reason) => ({ status: "rejected", reason }))
+          )
+        );
+      };
+
+      // t2
+      const todoList = document.getElementById("todo-list");
+
+      function addTodo() {
+        const newTodoText = document.getElementById("new-todo-text").value;
+        const newTodo = document.createElement("li");
+        const textNode = document.createTextNode(newTodoText);
+        newTodo.appendChild(textNode);
+        todoList.appendChild(newTodo);
+        document.getElementById("new-todo-text").value = "";
+      }
+    </script>
+  </body>
+</html>
