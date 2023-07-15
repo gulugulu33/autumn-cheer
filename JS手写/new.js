@@ -7,3 +7,5 @@ function myNew(fn, ...args) {
   const ret = fn.call(obj, ...args);
   return ret instanceof Object ? ret : obj;
 }
+
+// 创建新对象 原型赋值 调用 判断返回
