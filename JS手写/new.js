@@ -9,3 +9,9 @@ function myNew(fn, ...args) {
 }
 
 // 创建新对象 原型赋值 调用 判断返回
+function seeNew(fn, ...args) {
+  const obj = {}
+  obj.__proto__ = Object.create(fn.prototype)
+  let res = fn.call(this, ...args)
+  return res instanceof Object ? res : obj
+}
